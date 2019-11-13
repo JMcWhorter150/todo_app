@@ -3,7 +3,7 @@ todos = []
 
 # Need to add functions for each path
 def quit():
-    raise ValueError
+    raise NameError
 
 def print_todo():
     print("Current todos:")
@@ -18,11 +18,13 @@ def complete_todo(todos=todos):
     if len(todos) == 0:
         print("No todos.")
     else:
-        todo_to_remove = int(input("Which todo do you want to remove? "))
         try:
+            todo_to_remove = int(input("Which todo do you want to remove? "))
             del todos[todo_to_remove]
         except IndexError:
             print("Sorry, we couldn't find that one.")
+        except ValueError:
+            print("We only accept integers here.")
 
 # Need to make functional way to start and quit
 while True:
@@ -46,7 +48,7 @@ while True:
             add_todo()
         elif choice == "3":
             complete_todo()
-    except ValueError:
+    except NameError:
         print("Bye!")
         break
 
