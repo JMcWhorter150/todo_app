@@ -1,5 +1,5 @@
 # Need to make something to hold todos
-todos = ["There is some stuff", "and", "some other"]
+todos = []
 
 # Need to add functions for each path
 def quit():
@@ -14,13 +14,16 @@ def add_todo():
     user_input = input("What do you wish to add to your todo list? ")
     todos.append(user_input)
 
-# def complete_todo(todos=todos):
-#     if len(todos) == 0:
-#         print("No todos.")
-#     else:
-#         todo_to_remove = int(input("Which todo do you want to remove? ")
-#         del todos[todo_to_remove]
-# complete_todo()
+def complete_todo(todos=todos):
+    if len(todos) == 0:
+        print("No todos.")
+    else:
+        todo_to_remove = int(input("Which todo do you want to remove? "))
+        try:
+            del todos[todo_to_remove]
+        except IndexError:
+            print("Sorry, we couldn't find that one.")
+
 # Need to make functional way to start and quit
 while True:
 
@@ -41,10 +44,11 @@ while True:
             print_todo()
         elif choice == "2":
             add_todo()
-        # elif choice == "3":
-        #     complete_todo()
+        elif choice == "3":
+            complete_todo()
     except ValueError:
-        print("Bye")
+        print("Bye!")
         break
 
 # Need to handle errors of out of range things
+# Done :)
